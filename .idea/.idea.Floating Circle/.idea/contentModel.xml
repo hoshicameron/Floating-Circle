@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Unity Projects\FloatingCircle\Floating Circle" t="IncludeFlat">
+      <e p="Floating Circle.sln" t="IncludeFlat" />
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive" />
+    </e>
+    <e p="C:\Users\hoshyar\.Rider2018.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\hoshyar\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_Floating Circle.-191587618.00" t="ExcludeRecursive" />
+  </component>
+</project>
