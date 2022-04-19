@@ -12,11 +12,10 @@ public static class GameEvents
         GameOverEvent?.Invoke();
     }
 
-    //*********************************************
-    public static event Action SaveScoreEvent;
+    public static event Action GameStartEvent;
 
-    public static void CallSaveScoreEvent()
+    public static void CallGameStartEvent()
     {
-        SaveScoreEvent?.Invoke();
+        GameStartEvent?.Invoke();
     }
 }

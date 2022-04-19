@@ -4,7 +4,7 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 
-public class ScoreCounter : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreText=null;
 
@@ -15,7 +15,7 @@ public class ScoreCounter : MonoBehaviour
     public bool CanCountScore { get; set; }
     private StringBuilder scoreStringBuilder=new StringBuilder();
 
-    public static ScoreCounter Instance { get; set; }
+    public static GameManager Instance { get; set; }
 
     private void Awake()
     {
@@ -30,27 +30,31 @@ public class ScoreCounter : MonoBehaviour
 
     private void Start()
     {
-        CanCountScore = true;
+        CanCountScore = false;
         scoreCountTimer = Time.time + scoreCountTimerThreshold;
     }
 
     private void OnEnable()
     {
-        GameEvents.SaveScoreEvent+=OnSaveScoreEvent;
+        GameEvents.GameOverEvent+=OnGameOver;
+        GameEvents.GameStartEvent+=OnGameStart;
     }
-
     private void OnDisable()
     {
-        GameEvents.GameOverEvent-=OnSaveScoreEvent;
+        GameEvents.GameOverEvent-=OnGameOver;
+        GameEvents.GameStartEvent-=OnGameStart;
     }
 
-    private void OnSaveScoreEvent()
+    private void OnGameStart()
+    {
+        CanCountScore = true;
+    }
+
+    private void OnGameOver()
     {
         CanCountScore = false;
-        if (DataSaver.ReadScoreData() < score)
-        {
-            DataSaver.SaveScoreData(score);
-        }
+        DataSaver.SaveCurrentScoreData(score);
+        DataSaver.SaveHighestScoreData(score);
     }
 
     private void Update()
@@ -76,6 +80,11 @@ public class ScoreCounter : MonoBehaviour
     public int GetScore()
     {
         return score;
+    }
+
+    public void StartGame()
+    {
+        GameEvents.CallGameStartEvent();
     }
 }// Class
 

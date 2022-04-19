@@ -7,6 +7,6 @@ public class HighScore : MonoBehaviour
 {
     private void Start()
     {
-        GetComponent<TextMeshProUGUI>().SetText($"HighScore: {DataSaver.ReadScoreData()}");
+        GetComponent<TextMeshProUGUI>().SetText($"HighScore: {DataSaver.ReadHighestScoreData()}");
     }
 }

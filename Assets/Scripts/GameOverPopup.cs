@@ -12,8 +12,6 @@ public class GameOverPopup : MonoBehaviour
     {
         gameOverPopup.SetActive(false);
         GameEvents.GameOverEvent+=OnGameOverEvent;
-
-
     }
 
     private void OnDisable()
@@ -24,7 +22,7 @@ public class GameOverPopup : MonoBehaviour
     private void OnGameOverEvent()
     {
         gameOverPopup.SetActive(true);
-        currentScoreText.SetText(ScoreCounter.Instance.GetScore().ToString());
-        bestScoreText.SetText(DataSaver.ReadScoreData().ToString());
+        currentScoreText.SetText(DataSaver.ReadCurrentScoreData().ToString());
+        bestScoreText.SetText(DataSaver.ReadHighestScoreData().ToString());
     }
 }
